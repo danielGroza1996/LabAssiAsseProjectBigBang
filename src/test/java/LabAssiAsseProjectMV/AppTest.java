@@ -111,4 +111,46 @@ public class AppTest
         assertEquals(1, tlbServ.getSize());
         assertEquals(1, ntServ.getSize());
     }
+
+    /**
+     * Incremental Integration (top-down)
+     */
+    @Test
+    public void tc_incremental_addStudents() {
+        try {
+            stdServ.add(studentS);
+        }
+        catch (Exception e) {
+            fail();
+        }
+        assertEquals(1, stdServ.getSize());
+    }
+
+    @Test
+    public void tc_incremental_addAssignments() {
+        try {
+            stdServ.add(studentS);
+            tlbServ.add(temaLabS);
+        }
+        catch (Exception e) {
+            fail();
+        }
+        assertEquals(1, tlbServ.getSize());
+        assertEquals(1, stdServ.getSize());
+    }
+
+    @Test
+    public void tc_incremental_all() {
+        try {
+            stdServ.add(studentS);
+            tlbServ.add(temaLabS);
+            ntServ.add(notaS);
+        }
+        catch (Exception e) {
+            fail();
+        }
+        assertEquals(1, stdServ.getSize());
+        assertEquals(1, tlbServ.getSize());
+        assertEquals(1, ntServ.getSize());
+    }
 }
